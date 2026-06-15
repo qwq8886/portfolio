@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作品集 Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0B0B0D;
+  --bg-light:#121216;
+  --surface:#1A1A1E;
+  --border:#2A2A30;
+  --gold:#C4A25A;
+  --gold-light:#DBBE82;
+  --gold-dim:rgba(196,162,90,0.15);
+  --text:#E8E6E1;
+  --text-muted:#9A9894;
+  --text-dim:#6C6A67;
+  --fn:'Noto Sans SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --fi:'Inter','Noto Sans SC',sans-serif;
+}
+html{font-size:15px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--fn);
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ═══ NAVIGATION ═══ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(180deg,rgba(11,11,13,0.95),transparent);
+  transition:background 0.3s ease;
+}
+.nav.scrolled{background:rgba(11,11,13,0.97);backdrop-filter:blur(12px)}
+.nav-logo{font-family:var(--fi);font-size:14px;font-weight:600;color:var(--gold);letter-spacing:3px;text-transform:uppercase}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-link{
+  font-size:12px;font-weight:400;color:var(--text-muted);
+  text-decoration:none;letter-spacing:1px;
+  transition:color 0.3s ease;position:relative;padding-bottom:4px;
+}
+.nav-link:hover{color:var(--gold-light)}
+.nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s ease}
+.nav-link:hover::after{width:100%}
+
+/* ═══ HERO ═══ */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:80px 24px 60px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:50%;left:50%;
+  width:600px;height:600px;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,var(--gold-dim),transparent 70%);pointer-events:none;
+}
+.hero-content{position:relative;z-index:2;max-width:620px}
+.hero-label{
+  font-family:var(--fi);font-size:11px;font-weight:500;
+  color:var(--gold);letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:24px;opacity:0;animation:fadeUp 0.8s ease forwards;
+}
+.hero-title{
+  font-family:var(--fi);font-size:52px;font-weight:700;
+  color:var(--text);letter-spacing:6px;margin-bottom:20px;
+  line-height:1.1;opacity:0;animation:fadeUp 0.8s ease 0.2s forwards;
+}
+.hero-subtitle{
+  font-size:16px;font-weight:300;color:var(--text-muted);
+  margin-bottom:40px;letter-spacing:1px;opacity:0;animation:fadeUp 0.8s ease 0.4s forwards;
+}
+.hero-line{width:60px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:0 auto 40px;opacity:0;animation:fadeUp 0.8s ease 0.5s forwards}
+.hero-desc{
+  font-size:13.5px;color:var(--text-dim);line-height:2;
+  max-width:500px;margin:0 auto;opacity:0;animation:fadeUp 0.8s ease 0.6s forwards;
+}
+.hero-tools{
+  display:flex;justify-content:center;gap:12px;margin-top:32px;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.8s ease 0.8s forwards;
+}
+.hero-tool{
+  font-size:10px;letter-spacing:1.5px;color:var(--gold);
+  border:1px solid rgba(196,162,90,0.25);padding:4px 14px;border-radius:2px;
+  font-family:var(--fi);font-weight:500;
+}
+.hero-scroll{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;animation:fadeUp 0.8s ease 1s forwards;
+}
+.scroll-text{font-size:10px;color:var(--text-dim);letter-spacing:3px;text-transform:uppercase}
+.scroll-line{width:1px;height:40px;background:linear-gradient(180deg,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.2)}}
+
+/* ═══ SECTIONS ═══ */
+.section{padding:80px 40px;max-width:1200px;margin:0 auto}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.section-num{
+  font-family:var(--fi);font-size:11px;font-weight:600;color:var(--gold);
+  letter-spacing:2px;width:32px;height:32px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--gold);border-radius:50%;flex-shrink:0;
+}
+.section-title{font-size:24px;font-weight:700;color:var(--text);letter-spacing:2px}
+.section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.section-desc{
+  font-size:13.5px;color:var(--text-muted);line-height:1.9;
+  max-width:640px;margin-bottom:40px;
+}
+
+/* ═══ WORLD INTRO ═══ */
+.world-intro{
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:32px 36px;margin-bottom:40px;
+}
+.world-name{
+  font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;letter-spacing:2px;
+}
+.world-name-en{
+  font-family:var(--fi);font-size:12px;font-weight:400;
+  color:var(--gold);letter-spacing:2px;margin-bottom:16px;font-style:italic;
+}
+.world-tagline{
+  font-size:13px;color:var(--text-dim);line-height:1.9;font-style:italic;
+  border-left:2px solid var(--gold);padding-left:16px;margin-bottom:16px;
+}
+.world-body{font-size:13px;color:var(--text-muted);line-height:1.9}
+.world-body span{color:var(--text);font-weight:500}
+
+/* ═══ CHARACTERS ═══ */
+.char-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;
+}
+.char-card{
+  position:relative;border-radius:8px;overflow:hidden;
+  background:var(--surface);border:1px solid var(--border);
+  cursor:pointer;transition:transform 0.4s ease,box-shadow 0.4s ease;
+  aspect-ratio:3/4;
+}
+.char-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.5);border-color:var(--gold-dim)}
+.char-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease}
+.char-card:hover img{transform:scale(1.06)}
+.char-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(11,11,13,0.92));
+  display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
+  opacity:0;transition:opacity 0.3s ease;
+}
+.char-card:hover .char-overlay{opacity:1}
+.char-role{
+  font-size:9px;letter-spacing:2.5px;color:var(--gold);
+  text-transform:uppercase;margin-bottom:4px;font-family:var(--fi);
+}
+.char-name{font-size:16px;font-weight:700;color:var(--text);margin-bottom:2px}
+.char-name-en{font-size:10px;color:var(--text-dim);font-family:var(--fi);font-style:italic;letter-spacing:1px;margin-bottom:8px}
+.char-desc{font-size:11px;color:var(--text-muted);line-height:1.6}
+
+/* ═══ GALLERY ═══ */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.gallery-item{
+  position:relative;border-radius:8px;overflow:hidden;
+  background:var(--surface);border:1px solid var(--border);
+  cursor:pointer;transition:transform 0.4s ease,box-shadow 0.4s ease;
+}
+.gallery-item:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.4);border-color:var(--gold-dim)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(11,11,13,0.8));
+  opacity:0;transition:opacity 0.3s ease;display:flex;align-items:flex-end;padding:16px;
+}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-title{font-size:13px;font-weight:500;color:var(--text)}
+.gallery-sub{font-size:11px;color:var(--text-muted)}
+
+/* ═══ VIDEOS ═══ */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:24px}
+.video-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;transition:transform 0.3s ease,border-color 0.3s ease;
+}
+.video-card:hover{transform:translateY(-2px);border-color:var(--gold-dim)}
+.video-player{width:100%;aspect-ratio:16/9;background:var(--bg);display:block}
+.video-info{padding:20px 24px}
+.video-title{font-size:16px;font-weight:500;color:var(--text);margin-bottom:6px}
+.video-desc{font-size:12px;color:var(--text-dim);line-height:1.6}
+
+/* ═══ LIGHTBOX ═══ */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(11,11,13,0.95);justify-content:center;align-items:center;padding:40px;
+}
+.lightbox.active{display:flex}
+.lightbox-img{max-width:90%;max-height:90vh;object-fit:contain;border-radius:4px}
+.lightbox-close{
+  position:absolute;top:24px;right:32px;font-size:32px;color:var(--text-muted);
+  cursor:pointer;background:none;border:none;transition:color 0.2s ease;
+}
+.lightbox-close:hover{color:var(--text)}
+
+/* ═══ FOOTER ═══ */
+.footer{padding:40px;text-align:center;border-top:1px solid var(--border)}
+.footer-text{font-size:11px;color:var(--text-dim);letter-spacing:2px}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width:900px){
+  .char-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-title{font-size:36px}
+  .nav-links{display:none}
+  .section{padding:60px 24px}
+  .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .video-grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .char-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ═══ SCROLL REVEAL ═══ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#worldview" class="nav-link">世界观设定</a></li>
+    <li><a href="#gallery" class="nav-link">概念图集</a></li>
+    <li><a href="#competition" class="nav-link">参赛视频</a></li>
+    <li><a href="#personal" class="nav-link">个人作品</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">AI Visual Design &amp; Video Generation</div>
+    <h1 class="hero-title">作品集</h1>
+    <p class="hero-subtitle">AI 前期视觉设计 / 中期视频生成</p>
+    <div class="hero-line"></div>
+    <p class="hero-desc">
+      专注AI驱动的影视视觉创作，涵盖世界观架构、角色场景设计、AI视频生成等方向。<br>
+      以下作品均使用AI生成工具完成，展示从概念设定到视觉落地的全流程能力。
+    </p>
+    <div class="hero-tools">
+      <span class="hero-tool">Seedance 2.0</span>
+      <span class="hero-tool">GPT Image 2</span>
+      <span class="hero-tool">NanoBananaPro</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="scroll-text">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- 01 World Building -->
+<section class="section" id="worldview">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">世界观设定 · 银蔷薇典章</h2>
+    <span class="section-line"></span>
+  </div>
+
+  <div class="world-intro reveal">
+    <div class="world-name">银蔷薇典章</div>
+    <div class="world-name-en">Codex of the Silver Rose</div>
+    <div class="world-tagline">当铠甲成为礼服，当利剑即是礼仪——贵族的血液流淌着毁灭的优雅</div>
+    <div class="world-body">
+      这是一个以<span>「契约灵魂」</span>为核心驱动力的贵族文明世界。五大公爵家族共同执掌大陆，各自掌握不同的铸灵传承与战斗美学。在这里，<span>铠甲的繁复程度即是力量等级的直观呈现</span>，一切纷争通过高度仪式化的「剑礼」解决。视觉语言建立在巴洛克铠甲美学与东西方文化混融之上——<span>银、白、黑、金</span>四色为主调，蕾丝与花朵纹饰代表生命力，羽毛象征灵魂的自由度量。
+    </div>
+  </div>
+
+  <!-- Character Cards -->
+  <div class="char-grid">
+    <div class="char-card reveal">
+      <img src="char_01.png" alt="璃曼姬">
+      <div class="char-overlay">
+        <div class="char-role">银玫瑰院 · 院主</div>
+        <div class="char-name">璃曼姬</div>
+        <div class="char-name-en">Rimanji</div>
+        <div class="char-desc">银玫瑰院院主，粉羽银网面是其标志装束，从不以真容示人，被认为已达冕甲公爵境界。</div>
+      </div>
+    </div>
+    <div class="char-card reveal">
+      <img src="char_02.png" alt="玄素音">
+      <div class="char-overlay">
+        <div class="char-role">玄牡丹庄 · 嫡女</div>
+        <div class="char-name">玄素音</div>
+        <div class="char-name-en">Xuansuyin</div>
+        <div class="char-desc">精通「画式铸灵」，剑法如同在空气中挥洒水墨，每一次斩击都会留下短暂的流动花纹。</div>
+      </div>
+    </div>
+    <div class="char-card reveal">
+      <img src="char_03.png" alt="卡尔迪恩">
+      <div class="char-overlay">
+        <div class="char-role">铁雪骑士团 · 精锐骑士</div>
+        <div class="char-name">卡尔迪恩</div>
+        <div class="char-name-en">Caldean</div>
+        <div class="char-desc">最年轻的精锐成员，信奉极简主义活甲哲学，内心对美丽铠甲有着秘而不宣的向往。</div>
+      </div>
+    </div>
+    <div class="char-card reveal">
+      <img src="char_04.png" alt="歌洛斯泰因">
+      <div class="char-overlay">
+        <div class="char-role">金蔓执政廷 · 廷主</div>
+        <div class="char-name">歌洛斯泰因</div>
+        <div class="char-name-en">Golrostein</div>
+        <div class="char-desc">据称是最后一位亲眼见过化神甲者的活人，真正的铸灵能力从未在公众面前完全展现。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Gallery -->
+<section class="section" id="gallery">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">概念图集</h2>
+    <span class="section-line"></span>
+  </div>
+  <p class="section-desc reveal">
+    银蔷薇典章世界观的场景氛围设计，涵盖殿堂内景、战斗场景、道具细节等视觉元素，风格统一、光影考究。
+  </p>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal"><img src="世界观%20(1).png" alt="概念设定 01"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 01</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(2).png" alt="概念设定 02"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 02</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(3).png" alt="概念设定 03"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 03</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(4).png" alt="概念设定 04"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 04</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(5).png" alt="概念设定 05"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 05</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(6).png" alt="概念设定 06"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 06</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(7).png" alt="概念设定 07"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 07</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(8).png" alt="概念设定 08"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 08</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(9).png" alt="概念设定 09"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 09</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(10).png" alt="概念设定 10"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 10</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(11).png" alt="概念设定 11"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 11</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(12).png" alt="概念设定 12"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 12</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+  </div>
+</section>
+
+<!-- 03 Competition Videos -->
+<section class="section" id="competition">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">参赛视频</h2>
+    <span class="section-line"></span>
+  </div>
+  <p class="section-desc reveal">使用AI视频生成工具创作的参赛作品，涵盖动态视觉与叙事表达。</p>
+  <div class="video-grid">
+    <div class="video-card reveal">
+      <video class="video-player" controls>
+        <source src="%E5%8F%82%E8%B5%9B%E4%BD%9C%E5%93%81%20(1).mp4" type="video/mp4">
+      </video>
+      <div class="video-info">
+        <div class="video-title">参赛作品 · 01</div>
+        <div class="video-desc">AI视频生成参赛作品</div>
+      </div>
+    </div>
+    <div class="video-card reveal">
+      <video class="video-player" controls>
+        <source src="%E5%8F%82%E8%B5%9B%E4%BD%9C%E5%93%81%20(2).mp4" type="video/mp4">
+      </video>
+      <div class="video-info">
+        <div class="video-title">参赛作品 · 02</div>
+        <div class="video-desc">AI视频生成参赛作品</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Personal Work -->
+<section class="section" id="personal">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">个人作品</h2>
+    <span class="section-line"></span>
+  </div>
+  <p class="section-desc reveal">基于个人兴趣创作的实验性AI视频作品，探索AI工具的创意边界。</p>
+  <div class="video-grid">
+    <div class="video-card reveal" style="max-width:800px;margin:0 auto;width:100%">
+      <video class="video-player" controls>
+        <source src="%E4%B8%AA%E4%BA%BA%E4%BD%9C%E5%93%81.mp4" type="video/mp4">
+      </video>
+      <div class="video-info">
+        <div class="video-title">个人创作</div>
+        <div class="video-desc">实验性AI视频作品</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p class="footer-text">AI 前期视觉设计 / 中期视频生成 · Seedance 2.0 · GPT Image 2 · NanoBananaPro</p>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}
+  });
+},{threshold:0.1});
+reveals.forEach(el=>observer.observe(el));
+
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('nav');
+  if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');
+});
+
+const lightbox=document.getElementById('lightbox');
+const lightboxImg=document.getElementById('lightboxImg');
+const lightboxClose=document.getElementById('lightboxClose');
+
+document.querySelectorAll('.gallery-item, .char-card').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const img=item.querySelector('img');
+    lightboxImg.src=img.src;
+    lightbox.classList.add('active');
+    document.body.style.overflow='hidden';
+  });
+});
+
+lightboxClose.addEventListener('click',()=>{lightbox.classList.remove('active');document.body.style.overflow=''});
+lightbox.addEventListener('click',(e)=>{if(e.target===lightbox){lightbox.classList.remove('active');document.body.style.overflow=''}});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){lightbox.classList.remove('active');document.body.style.overflow=''}});
+</script>
+
+</body>
+</html>
