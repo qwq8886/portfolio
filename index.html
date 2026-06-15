@@ -122,21 +122,56 @@ body{
 /* ═══ WORLD INTRO ═══ */
 .world-intro{
   background:var(--surface);border:1px solid var(--border);border-radius:8px;
-  padding:32px 36px;margin-bottom:40px;
+  padding:36px 40px;margin-bottom:32px;
 }
 .world-name{
-  font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;letter-spacing:2px;
+  font-size:26px;font-weight:700;color:var(--text);margin-bottom:4px;letter-spacing:3px;
 }
 .world-name-en{
   font-family:var(--fi);font-size:12px;font-weight:400;
-  color:var(--gold);letter-spacing:2px;margin-bottom:16px;font-style:italic;
+  color:var(--gold);letter-spacing:2px;margin-bottom:20px;font-style:italic;
 }
 .world-tagline{
-  font-size:13px;color:var(--text-dim);line-height:1.9;font-style:italic;
-  border-left:2px solid var(--gold);padding-left:16px;margin-bottom:16px;
+  font-size:13.5px;color:var(--text-dim);line-height:1.9;font-style:italic;
+  border-left:2px solid var(--gold);padding-left:16px;margin-bottom:20px;
 }
-.world-body{font-size:13px;color:var(--text-muted);line-height:1.9}
+.world-body{font-size:13px;color:var(--text-muted);line-height:2;margin-bottom:16px}
 .world-body span{color:var(--text);font-weight:500}
+.world-body:last-child{margin-bottom:0}
+
+/* ═══ WORLD DETAIL CARDS ═══ */
+.world-detail-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px;
+}
+.world-detail-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:28px 32px;position:relative;overflow:hidden;
+  transition:border-color 0.3s ease;
+}
+.world-detail-card:hover{border-color:var(--gold-dim)}
+.world-detail-label{
+  font-family:var(--fi);font-size:10px;font-weight:500;
+  color:var(--gold);letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.world-detail-title{
+  font-size:17px;font-weight:700;color:var(--text);letter-spacing:1px;margin-bottom:12px;
+}
+.world-detail-body{font-size:12.5px;color:var(--text-muted);line-height:2}
+.world-detail-body span{color:var(--text);font-weight:500}
+
+/* ═══ SUB-SECTION HEADER ═══ */
+.sub-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:24px;margin-top:16px;
+}
+.sub-icon{
+  width:28px;height:28px;border-radius:4px;
+  background:var(--gold-dim);border:1px solid rgba(196,162,90,0.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:var(--gold);flex-shrink:0;
+}
+.sub-title{font-size:18px;font-weight:700;color:var(--text);letter-spacing:1.5px}
+.sub-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
 
 /* ═══ CHARACTERS ═══ */
 .char-grid{
@@ -222,6 +257,7 @@ body{
   .section{padding:60px 24px}
   .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
   .video-grid{grid-template-columns:1fr}
+  .world-detail-grid{grid-template-columns:1fr}
 }
 @media (max-width:480px){
   .char-grid{grid-template-columns:1fr 1fr}
@@ -238,8 +274,7 @@ body{
 <nav class="nav" id="nav">
   <div class="nav-logo">Portfolio</div>
   <ul class="nav-links">
-    <li><a href="#worldview" class="nav-link">世界观设定</a></li>
-    <li><a href="#gallery" class="nav-link">概念图集</a></li>
+    <li><a href="#worldview" class="nav-link">世界观 · 概念图集</a></li>
     <li><a href="#competition" class="nav-link">参赛视频</a></li>
     <li><a href="#personal" class="nav-link">个人作品</a></li>
   </ul>
@@ -268,7 +303,9 @@ body{
   </div>
 </section>
 
-<!-- 01 World Building -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- 01 · 世界观设定 · 银蔷薇典章 + 概念图集（合并）         -->
+<!-- ═══════════════════════════════════════════════════════ -->
 <section class="section" id="worldview">
   <div class="section-header reveal">
     <span class="section-num">01</span>
@@ -276,86 +313,84 @@ body{
     <span class="section-line"></span>
   </div>
 
+  <!-- ── 世界观总述 ── -->
   <div class="world-intro reveal">
     <div class="world-name">银蔷薇典章</div>
     <div class="world-name-en">Codex of the Silver Rose</div>
     <div class="world-tagline">当铠甲成为礼服，当利剑即是礼仪——贵族的血液流淌着毁灭的优雅</div>
     <div class="world-body">
-      这是一个以<span>「契约灵魂」</span>为核心驱动力的贵族文明世界。五大公爵家族共同执掌大陆，各自掌握不同的铸灵传承与战斗美学。在这里，<span>铠甲的繁复程度即是力量等级的直观呈现</span>，一切纷争通过高度仪式化的「剑礼」解决。视觉语言建立在巴洛克铠甲美学与东西方文化混融之上——<span>银、白、黑、金</span>四色为主调，蕾丝与花朵纹饰代表生命力，羽毛象征灵魂的自由度量。
+      银蔷薇典章的舞台——<span>「银质纪元」</span>的大陆阿尔真蒂亚（Argentia），是一个以<span>「契约灵魂」</span>为核心驱动力的贵族文明世界。在这里，战争是最高形式的礼仪，铠甲是最精密的时装，每一位持剑者都是这个世界秩序的具现。
+    </div>
+    <div class="world-body">
+      世界的能量来源于<span>「铸灵契约」</span>——人类与某种古老意志缔结灵魂盟约，以此获得铸造「活甲」的能力。活甲并非单纯的金属装备，而是承载着持有者灵魂共振的有机战甲，会随主人的情感与意志不断演化。契约等级越深，铠甲的纹饰便越趋近艺术，而非武器。
+    </div>
+    <div class="world-body">
+      阿尔真蒂亚由<span>五大贵族家族</span>共同执掌，各家掌握着不同的铸灵传承与战斗美学。百年和约在一场名为<span>「玫瑰审判」</span>的神秘事件后彻底崩溃——有人开始掌握让活甲「吞噬」宿主灵魂的禁术，整个贵族秩序面临从内部瓦解的危机。一切纷争通过高度仪式化的<span>「剑礼」</span>制度解决——胜者不一定要杀死对手，但必须使对方的活甲永久失去某一片区域的纹饰，这意味着一部分灵魂契约的永久封印。
+    </div>
+    <div class="world-body">
+      视觉语言建立在<span>「高贵的暴力」与「精致的毁灭」</span>之间的张力上。这是一个以「美即力量」为信仰的世界——铸灵师的精神境界越高，其铸造出的活甲便越精美繁复。花朵纹饰代表生命力，蕾丝代表对死亡的轻盈态度，羽毛象征灵魂的自由度量。<span>银、白、黑、金</span>四色为主调，最可怕的敌人往往穿着最繁复的铠甲。
     </div>
   </div>
 
-  <!-- Character Cards -->
+  <!-- ── 美学语言 ── -->
+  <div class="world-detail-card reveal" style="margin-bottom:48px">
+    <div class="world-detail-label">Aesthetic Code</div>
+    <div class="world-detail-title">美学语言</div>
+    <div class="world-detail-body">
+      六大核心美学支柱：<span>巴洛克铠甲美学</span>——所有战甲以过度繁复的纹饰为荣，将蔷薇、蔓藤、牡丹等植物纹样精密铸刻于金属之上；<span>东西方文化混融</span>——旗袍、汉服与欧式礼服共存，武士刀与细剑并列出现；<span>极致色彩克制</span>——银白黑金四色为主，粉色代表感情流露，红色代表危险与禁忌；<span>冷静的高强度戏剧性</span>——内敛克制的表情与充满戏剧张力的姿态形成反差；<span>时装逻辑的战斗设计</span>——高跟鞋是战斗标配，蕾丝裙摆提供视觉干扰，美丽本身即是战术。
+    </div>
+  </div>
+
+  <!-- ── 子板块 A：人物设定 ── -->
+  <div class="sub-header reveal">
+    <span class="sub-icon">&#9876;</span>
+    <h3 class="sub-title">人物设定</h3>
+    <span class="sub-line"></span>
+  </div>
+  <p class="section-desc reveal">核心持剑者角色视觉设定，展示铠甲、武器与整体造型设计。</p>
+
   <div class="char-grid">
-    <div class="char-card reveal">
-      <img src="char_01.png" alt="璃曼姬">
-      <div class="char-overlay">
-        <div class="char-role">银玫瑰院 · 院主</div>
-        <div class="char-name">璃曼姬</div>
-        <div class="char-name-en">Rimanji</div>
-        <div class="char-desc">银玫瑰院院主，粉羽银网面是其标志装束，从不以真容示人，被认为已达冕甲公爵境界。</div>
-      </div>
-    </div>
-    <div class="char-card reveal">
-      <img src="char_02.png" alt="玄素音">
-      <div class="char-overlay">
-        <div class="char-role">玄牡丹庄 · 嫡女</div>
-        <div class="char-name">玄素音</div>
-        <div class="char-name-en">Xuansuyin</div>
-        <div class="char-desc">精通「画式铸灵」，剑法如同在空气中挥洒水墨，每一次斩击都会留下短暂的流动花纹。</div>
-      </div>
-    </div>
-    <div class="char-card reveal">
-      <img src="char_03.png" alt="卡尔迪恩">
-      <div class="char-overlay">
-        <div class="char-role">铁雪骑士团 · 精锐骑士</div>
-        <div class="char-name">卡尔迪恩</div>
-        <div class="char-name-en">Caldean</div>
-        <div class="char-desc">最年轻的精锐成员，信奉极简主义活甲哲学，内心对美丽铠甲有着秘而不宣的向往。</div>
-      </div>
-    </div>
-    <div class="char-card reveal">
-      <img src="char_04.png" alt="歌洛斯泰因">
-      <div class="char-overlay">
-        <div class="char-role">金蔓执政廷 · 廷主</div>
-        <div class="char-name">歌洛斯泰因</div>
-        <div class="char-name-en">Golrostein</div>
-        <div class="char-desc">据称是最后一位亲眼见过化神甲者的活人，真正的铸灵能力从未在公众面前完全展现。</div>
-      </div>
-    </div>
+    <div class="char-card reveal"><img src="char_01.png" alt="角色设定 01"></div>
+    <div class="char-card reveal"><img src="char_02.png" alt="角色设定 02"></div>
+    <div class="char-card reveal"><img src="char_03.png" alt="角色设定 03"></div>
+    <div class="char-card reveal"><img src="char_04.png" alt="角色设定 04"></div>
   </div>
-</section>
 
-<!-- 02 Gallery -->
-<section class="section" id="gallery">
-  <div class="section-header reveal">
-    <span class="section-num">02</span>
-    <h2 class="section-title">概念图集</h2>
-    <span class="section-line"></span>
+  <div class="gallery-grid" style="margin-top:16px">
+    <div class="gallery-item reveal"><img src="世界观%20(3).png" alt="角色概念 01"><div class="gallery-overlay"><div><div class="gallery-title">角色概念 · 01</div><div class="gallery-sub">双人同行 · 玫瑰之境</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(5).png" alt="角色概念 02"><div class="gallery-overlay"><div><div class="gallery-title">角色概念 · 02</div><div class="gallery-sub">银面羽冠 · 礼仪剑士</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(6).png" alt="角色概念 03"><div class="gallery-overlay"><div><div class="gallery-title">角色概念 · 03</div><div class="gallery-sub">银金甲骑 · 白纱骑士</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(7).png" alt="角色概念 04"><div class="gallery-overlay"><div><div class="gallery-title">角色概念 · 04</div><div class="gallery-sub">银发剑客 · 长衣武者</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(8).png" alt="角色概念 05"><div class="gallery-overlay"><div><div class="gallery-title">角色概念 · 05</div><div class="gallery-sub">粉羽银盔 · 蕾丝战士</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(10).png" alt="角色概念 06"><div class="gallery-overlay"><div><div class="gallery-title">角色概念 · 06</div><div class="gallery-sub">牡丹旗袍 · 辫发剑姬</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(11).png" alt="角色概念 07"><div class="gallery-overlay"><div><div class="gallery-title">角色概念 · 07</div><div class="gallery-sub">黑金旗袍 · 银甲武士</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(12).png" alt="角色概念 08"><div class="gallery-overlay"><div><div class="gallery-title">角色概念 · 08</div><div class="gallery-sub">金甲暗刃 · 旗袍贵族</div></div></div></div>
+  </div>
+
+  <!-- ── 子板块 B：场景设定 ── -->
+  <div class="sub-header reveal" style="margin-top:56px">
+    <span class="sub-icon">&#9962;</span>
+    <h3 class="sub-title">场景设定</h3>
+    <span class="sub-line"></span>
   </div>
   <p class="section-desc reveal">
-    银蔷薇典章世界观的场景氛围设计，涵盖殿堂内景、战斗场景、道具细节等视觉元素，风格统一、光影考究。
+    银蔷薇典章世界观的场景氛围设计，涵盖殿堂内景、神秘空间、标志性建筑等视觉元素，风格统一、光影考究。
   </p>
   <div class="gallery-grid">
-    <div class="gallery-item reveal"><img src="世界观%20(1).png" alt="概念设定 01"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 01</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(2).png" alt="概念设定 02"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 02</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(3).png" alt="概念设定 03"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 03</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(4).png" alt="概念设定 04"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 04</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(5).png" alt="概念设定 05"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 05</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(6).png" alt="概念设定 06"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 06</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(7).png" alt="概念设定 07"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 07</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(8).png" alt="概念设定 08"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 08</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(9).png" alt="概念设定 09"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 09</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(10).png" alt="概念设定 10"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 10</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(11).png" alt="概念设定 11"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 11</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
-    <div class="gallery-item reveal"><img src="世界观%20(12).png" alt="概念设定 12"><div class="gallery-overlay"><div><div class="gallery-title">概念设定 · 12</div><div class="gallery-sub">场景氛围设计</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(1).png" alt="场景设定 01"><div class="gallery-overlay"><div><div class="gallery-title">场景设定 · 01</div><div class="gallery-sub">银灰殿堂 · 水镜圣殿</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(2).png" alt="场景设定 02"><div class="gallery-overlay"><div><div class="gallery-title">场景设定 · 02</div><div class="gallery-sub">雾隐鸟居 · 水上古村</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(4).png" alt="场景设定 03"><div class="gallery-overlay"><div><div class="gallery-title">场景设定 · 03</div><div class="gallery-sub">哥特长廊 · 红毯圣道</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(9).png" alt="场景设定 04"><div class="gallery-overlay"><div><div class="gallery-title">场景设定 · 04</div><div class="gallery-sub">金红圣堂 · 光之尽头</div></div></div></div>
+    <div class="gallery-item reveal"><img src="世界观%20(13).png" alt="场景设定 05"><div class="gallery-overlay"><div><div class="gallery-title">场景设定 · 05</div><div class="gallery-sub">金蔷薇广场 · 白柱圣城</div></div></div></div>
   </div>
 </section>
 
-<!-- 03 Competition Videos -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- 02 · 参赛视频                                           -->
+<!-- ═══════════════════════════════════════════════════════ -->
 <section class="section" id="competition">
   <div class="section-header reveal">
-    <span class="section-num">03</span>
+    <span class="section-num">02</span>
     <h2 class="section-title">参赛视频</h2>
     <span class="section-line"></span>
   </div>
@@ -382,10 +417,12 @@ body{
   </div>
 </section>
 
-<!-- 04 Personal Work -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- 03 · 个人作品                                           -->
+<!-- ═══════════════════════════════════════════════════════ -->
 <section class="section" id="personal">
   <div class="section-header reveal">
-    <span class="section-num">04</span>
+    <span class="section-num">03</span>
     <h2 class="section-title">个人作品</h2>
     <span class="section-line"></span>
   </div>
